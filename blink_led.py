@@ -15,9 +15,11 @@ def Blink(numTimes,speed):
     print("DONE")
     GPIO.cleanup()
 
-## Ask user for total number of blinks and length of each blink
-iterations = input("Enter total number of times to blink: ")
-speed = input("Enter length of each blink(seconds): ")
+if __name__ == "__main__":
 
-## Start Blink() function. Convert user input from strings to numeric data types and pass to Blink() as parameters
-Blink(int(iterations),float(speed))
+    ## Ask user for total number of blinks and length of each blink
+    iterations = input("Enter total number of times to blink: ")
+    speed = input("Enter length of each blink(seconds): ")
+
+    ## Start Blink() function. Convert user input from strings to numeric data types and pass to Blink() as parameters
+    Blink(int(iterations),float(speed))
