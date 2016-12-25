@@ -1,2 +1,2 @@
 import blink_led as blink
-blink.Blink(2, 2)
+blink.blink(0.3)

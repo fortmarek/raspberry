@@ -1,25 +1,40 @@
 import RPi.GPIO as GPIO ## Import GPIO library
 import time ## Import 'time' library. Allows us to use 'sleep'
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(7, GPIO.OUT)
 
-def Blink(numTimes,speed):
-    for i in range(0,numTimes):
-        GPIO.output(7,True)
-        print("ON")
-        time.sleep(speed)
-        print("OFF")
-        GPIO.output(7,False)
-        time.sleep(speed)
-    print("DONE")
+
+def blink(pin, speed):
+    GPIO.output(pin, True)
+    print("ON")
+    time.sleep(speed)
+    print("OFF")
+    GPIO.output(pin, False)
+    time.sleep(speed)
+
+    
+def show(iterations):
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(7, GPIO.OUT)
+    GPIO.setup(11, GPIO.OUT)
+
+    for i in range(0, iterations):
+        blink(7, 0.1)
+        time.sleep(0.1)
+        blink(11, 0.1)
+        time.sleep(0.1)
+
     GPIO.cleanup()
 
-if __name__ == "__main__":
+def test_blink():
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(7, GPIO.OUT)
 
     ## Ask user for total number of blinks and length of each blink
     iterations = input("Enter total number of times to blink: ")
     speed = input("Enter length of each blink(seconds): ")
 
-    ## Start Blink() function. Convert user input from strings to numeric data types and pass to Blink() as parameters
-    Blink(int(iterations),float(speed))
+    for i in range(0, iterations):
+        blink(7, speed)
+
+    GPIO.cleanup()
+
