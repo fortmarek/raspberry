@@ -5,9 +5,7 @@ import time ## Import 'time' library. Allows us to use 'sleep'
 
 def blink(pin, speed):
     GPIO.output(pin, True)
-    print("ON")
     time.sleep(speed)
-    print("OFF")
     GPIO.output(pin, False)
     time.sleep(speed)
 
