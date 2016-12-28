@@ -14,7 +14,6 @@ def flash_multiple(pins):
 def stop_multiple(pins):
     for pin in pins:
         GPIO.output(pin, False)
-    GPIO.cleanup()
 
 if __name__ == "__main__":
     GPIO.setmode(GPIO.BOARD)
