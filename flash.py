@@ -7,7 +7,13 @@ def flash(pin):
 def stop(pin):
     GPIO.output(pin, False)
 
-def clean():
+def flash_multiple(pins):
+    for pin in pins:
+        GPIO.output(pin, True)
+
+def stop_multiple(pins):
+    for pin in pins:
+        GPIO.output(pin, False)
     GPIO.cleanup()
 
 if __name__ == "__main__":
@@ -21,3 +27,4 @@ if __name__ == "__main__":
     wait_for_stop = input("Enter to stop")
     stop(pin)
 
+    GPIO.cleanup()
