@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import flash
+import time
 
 
 #Pin equivalents to digit marks
@@ -44,3 +45,8 @@ def tick_number(n):
     dict = digit_dict[n]
     flash.stop_multiple(dict[0])
     flash.flash_multiple(dict[1])
+
+def countdown():
+    for i in range(0, 10):
+        tick_number(i)
+        time.sleep(1)
